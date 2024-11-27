@@ -91,7 +91,6 @@ def on_going(page_id=1):
             text_content = link_tag.text.strip()
             pagination_data.append({"last_part": None, "text": text_content})
 
-
     return render_template("ongoing-anime.html", ongoing=data_list, pgn=pagination_data, current=str(current_page))
 
 @app.route('/complete-anime/', methods=['GET'])
@@ -155,7 +154,7 @@ def anime_detail(anime_id):
     anime_info = {}
     for p in info_paragraphs:
         key = p.find('b').text.strip()
-        value = p.get_text(strip=True).split(':', 1)[1].strip()  # Mengambil teks setelah ":"
+        value = p.get_text(strip=True).split(':', 1)[1].strip()  
         anime_info[key] = value
     genre_links = infozingle_div.find_all('a')
     genres = [genre.text for genre in genre_links]
@@ -187,6 +186,7 @@ def anime_detail(anime_id):
                 "tanggal_rilis": date
             }
             all_episodes_data.append(episode_dict)
+
     return render_template("anime-detail.html",info=anime_info ,episode=all_episodes_data)
 
 

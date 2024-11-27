@@ -1,1 +1,1 @@
-# Website Anime dengan metode Scraping
+# Website Anime dengan metode Scraping menggunakan Flask
