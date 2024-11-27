@@ -1,0 +1,57 @@
+<nav class="bg-orange-500 sticky top-0 z-50 shadow-md">
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <!-- Logo -->
+    <a href="#" class="text-white text-2xl font-bold">ANIM Fly</a>
+
+    <!-- Menu Toggle Button for Mobile -->
+    <button class="text-white block lg:hidden" id="menu-toggle">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        ></path>
+      </svg>
+    </button>
+
+    <!-- Navigation Links -->
+    <ul class="flex space-x-6 lg:flex hidden" id="menu">
+      <li>
+        <a
+          href="{{ url_for('complete') }}"
+          class="text-white hover:bg-orange-600 px-4 py-2 rounded transition duration-300"
+          >Anime Complete</a
+        >
+      </li>
+      <li>
+        <a
+          href="{{ url_for('on_going') }}"
+          class="text-white hover:bg-orange-600 px-4 py-2 rounded transition duration-300"
+          >Anime Ongoing</a
+        >
+      </li>
+      <!-- <li>
+        <a
+          href="#"
+          class="text-white hover:bg-orange-600 px-4 py-2 rounded transition duration-300"
+          >About Web</a
+        >
+      </li> -->
+    </ul>
+  </div>
+</nav>
+
+<!-- Add this script to toggle the mobile menu -->
+<script>
+  document.getElementById("menu-toggle").addEventListener("click", function () {
+    const menu = document.getElementById("menu");
+    menu.classList.toggle("hidden"); // Toggle the visibility of the menu
+  });
+</script>

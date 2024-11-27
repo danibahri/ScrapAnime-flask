@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include("layouts/head.html") %}
+  <body class="bg-gray-100">
+    <div class="navbar">{% include("layouts/navbar.html") %}</div>
+    <div class="main mb-10 max-w-screen-lg m-auto mt-6 px-4">
+      <div class="py-5 w-full">
+        <span class="text-xl bg-orange-400 text-white px-3 py-2 rounded-lg">
+          Anime Ongoing
+        </span>
+      </div>
+      <div
+        class="warp-card grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+      >
+        {% include("layouts/card-ongoing.html") %}
+      </div>
+      <div class="pagination p-4 flex justify-center m-auto">
+        <div class="flex space-x-1">
+          {% for pages in pgn %}
+          <a
+            href="{{ url_for('on_going', page_id=pages['last_part']) }}"
+            class="rounded-md border py-2 px-3 text-center text-sm transition-all shadow-sm hover:shadow-lg {% if pages['text'] == current or pages['last_part'] == None %} bg-orange-600 text-white pointer-events-none {% else %} text-orange-600 hover:text-white hover:bg-orange-600 {% endif %} focus:text-white active:text-orange-600 active:bg-orange-800 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none ml-2"
+          >
+            {{ pages['text'] }}
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

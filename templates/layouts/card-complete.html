@@ -1,0 +1,40 @@
+{% for anime in complete %}
+<div class="flex items-center justify-center rounded-lg">
+  <div
+    class="relative w-full max-w-sm rounded-lg overflow-hidden shadow-lg transform transition-transform duration-500 hover:scale-105 hover:shadow-2xl"
+  >
+    <!-- Background Image -->
+    <div
+      class="bg-cover bg-center h-72"
+      style="
+        background-image: url('{{ anime['Gambar'] }}');
+      "
+    >
+      <!-- Gradient Overlay -->
+      <div
+        class="h-full w-full bg-gradient-to-t from-black to-transparent flex items-end p-4"
+      >
+        <!-- Card Content -->
+        <div class="text-white w-full">
+          <h2 class="text-2xl font-bold mb-2 truncate">
+            {{ anime['Judul Film'] }}
+          </h2>
+          <p class="text-sm">{{ anime['Episode'] }}</p>
+          <p class="text-sm absolute right-0 top-10 px-2 py-1 bg-orange-500">
+            <i class="bi bi-star-fill"></i> {{ anime['Tipe Episode'] }}
+          </p>
+          <p class="text-sm">{{ anime['Tanggal Baru'] }}</p>
+          <div class="button w-full">
+            <a
+              href="{{ '/'+anime['Link'] }}"
+              target="_blank"
+              class="inline-block mt-4 w-full text-center py-1 bg-orange-500 hover:bg-orange-600 rounded text-white font-semibold transition duration-300"
+              >Tonton Sekarang</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}

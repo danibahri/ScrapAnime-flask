@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include("layouts/head.html") %}
+  <body class="bg-gray-100">
+    <div class="navbar">{% include("layouts/navbar.html") %}</div>
+    <div class="main mb-10 max-w-screen-lg m-auto mt-6 px-4">
+      <div class="py-5 w-full">
+        <span class="text-xl bg-orange-400 text-white px-3 py-2 rounded-lg">
+          Anime Ongoing
+        </span>
+      </div>
+      <div
+        class="warp-card grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+      >
+        {% include("layouts/card-ongoing.html") %}
+      </div>
+      <div class="py-5 w-full mt-20">
+        <span class="text-xl bg-orange-400 text-white px-3 py-2 rounded-lg">
+          Anime Completed
+        </span>
+      </div>
+      <div
+        class="warp-card grid grid-cols-2 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+      >
+        {% include("layouts/card-complete.html") %}
+      </div>
+    </div>
+  </body>
+</html>
