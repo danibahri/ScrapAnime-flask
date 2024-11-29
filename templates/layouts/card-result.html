@@ -1,0 +1,33 @@
+{%for srch in search%}
+
+<div
+  class="flex flex-col bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-full my-4 mx-4"
+>
+  <div class="image relative">
+    <img
+      class="md:object-contain object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
+      src="{{ srch['Image_URL'] }}"
+      alt=""
+    />
+    <span
+      class="absolute right-0 top-10 px-1 shadow-sm md:text-sm bg-orange-600 text-white"
+      >{{srch['Rating']}}</span
+    >
+  </div>
+  <div class="p-4 w-full">
+    <a
+      href="{{ '/'+srch['Link'] }}"
+      class="text-lg font-bold tracking-tight text-gray-900"
+    >
+      {{ srch['Title'] }}
+    </a>
+    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+      {{ srch['Status'] }}
+    </p>
+    <p class="font-normal text-gray-700 dark:text-gray-400">
+      {{ ','.join(srch['Genres']) }}
+    </p>
+  </div>
+</div>
+
+{%endfor%}

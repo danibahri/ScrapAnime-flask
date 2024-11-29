@@ -204,6 +204,49 @@ def episode(eps_id):
     
     return "Video tidak ditemukan", 404
 
+@app.route('/search/', methods=['GET'])
+def search():
+    parameter = request.args.get('search')
+    url = (f"{BASE_URL}?s={parameter}&post_type=anime")
+    response = requests.get(url)
+    soup = BeautifulSoup(response.content, 'html.parser')
+    anime_list = soup.find_all('li', style='list-style:none;')
+
+    anime_data_list = []
+
+    for anime in anime_list:
+        img_tag = anime.find('img')
+        img_url = img_tag['src'] if img_tag else None
+        
+        title_tag = anime.find('h2').find('a')
+        title = title_tag.text.strip() if title_tag else "Unknown Title"
+        link = title_tag['href'] if title_tag else "No Link"
+
+        parsed_url = urlparse(link)
+        link_path = parsed_url.path.strip('/')
+        
+        genre_div = anime.find('b', text='Genres').find_parent('div')
+        genres = [genre.text.strip() for genre in genre_div.find_all('a')] if genre_div else []
+        
+        status_div = anime.find('b', text='Status')
+        status = status_div.find_parent('div').text.split(':', 1)[-1].strip() if status_div else "Unknown Status"
+        
+        rating_div = anime.find('b', text='Rating')
+        rating = rating_div.find_parent('div').text.split(':', 1)[-1].strip() if rating_div else "No Rating"
+        
+        anime_data = {
+            'Title': title,
+            'Link': link_path,
+            'Image_URL': img_url,
+            'Genres': genres,
+            'Status': status,
+            'Rating': rating
+        }
+        
+        anime_data_list.append(anime_data)
+    return render_template("search-result.html", search=anime_data_list)
+
+
 # @app.route("/episode/<eps_id>", methods=['GET'])
 # def epsiode(eps_id):
 #     url = BASE_URL + "episode/" + eps_id
