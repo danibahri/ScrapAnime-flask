@@ -141,10 +141,10 @@ def complete(page_id=1):
 
 @app.route('/anime/<anime_id>', methods=['GET'])
 def anime_detail(anime_id):
-    url = BASE_URL + "anime/" + anime_id
-    # payload = { 'api_key': 'e99555cb7689941638eb271577dfbc7e', 'url': url }
-    # response = requests.get('https://api.scraperapi.com/', params=payload)
-    response = requests.get(url)
+    url = (f"{BASE_URL}anime/{anime_id}")
+    payload = { 'api_key': 'e99555cb7689941638eb271577dfbc7e', 'url': url }
+    response = requests.get('https://api.scraperapi.com/', params=payload)
+    # response = requests.get(url)
     soup = BeautifulSoup(response.content, 'html.parser')
     fotoanime_div = soup.find('div', class_='fotoanime')
     image_tag = fotoanime_div.find('img')
@@ -271,4 +271,5 @@ def search():
 #     return video_360p
 #     # return render_template("episode.html", video_360p=video_360p, video_480p=video_480p, video_720p=video_720p)
 
-app.run(debug=True)
+if __name__ == "__main__":
+    app.run(debug=True)
