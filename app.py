@@ -192,8 +192,10 @@ def anime_detail(anime_id):
 
 @app.route('/episode/<eps_id>', methods=['GET'])
 def episode(eps_id):
-    url = BASE_URL + "episode/" + eps_id
-    respons = requests.get(url)
+    url = (f"{BASE_URL}episode/{eps_id}")
+    payload = { 'api_key': 'e99555cb7689941638eb271577dfbc7e', 'url': url }
+    respons = requests.get('https://api.scraperapi.com/', params=payload)
+    # respons = requests.get(url)
     soup = BeautifulSoup(respons.content, 'html.parser')
 
     iframe_tag = soup.find('iframe')
