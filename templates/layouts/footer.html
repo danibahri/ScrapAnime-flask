@@ -5,35 +5,40 @@
         href="{{ url_for('index') }}"
         class="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
       >
-        <img src="../../public/image/logo.jpg" class="" alt="Animfly Logo" />
+        <img
+          src="{{ url_for('static', filename='image/logo.png') }}"
+          class="h-20"
+          style="
+            -webkit-filter: drop-shadow(1px 1px 0 black)
+              drop-shadow(-1px -1px 0 black);
+            filter: drop-shadow(1px 1px 0 black) drop-shadow(-1px -1px 0 black);
+          "
+          alt="Animfly Logo"
+        />
         <span
           class="self-center text-2xl font-semibold whitespace-nowrap text-white"
           >Animfly</span
         >
       </a>
       <ul
-        class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0"
+        class="flex flex-wrap items-center mb-6 text-sm font-medium text-white sm:mb-0"
       >
         <li>
-          <a href="#" class="text-white hover:underline me-4 md:me-6">About</a>
+          <a href="#" class="hover:underline me-4 md:me-6">About</a>
         </li>
         <li>
-          <a href="#" class="text-white hover:underline me-4 md:me-6"
-            >Privacy Policy</a
-          >
+          <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
         </li>
         <li>
-          <a href="#" class="text-white hover:underline me-4 md:me-6"
-            >Licensing</a
-          >
+          <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
         </li>
         <li>
-          <a href="#" class="text-white hover:underline">Contact</a>
+          <a href="#" class="hover:underline">Contact</a>
         </li>
       </ul>
     </div>
     <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8" />
-    <span class="text-white block text-sm sm:text-center"
+    <span class="text-white block text-sm text-center sm:text-center"
       >devoleped by
       <a href="#" class="text-white hover:underline">danibahri</a></span
     >
